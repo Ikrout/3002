@@ -9,7 +9,7 @@ T = 100          # total simulation time in ms
 dt = 0.1         # time step in ms
 time = np.arange(0, T, dt)  # time vector
 
-# --- Neuron Parameters (realistic, in mV and pA) --- You should annotate this.
+# --- Neuron Parameters (realistic, in mV and pA) --- You should annotate this. What if students don't know how to do this!
 C = 200.0      
 V_th = -50.0  
 V_reset = -65.0 
