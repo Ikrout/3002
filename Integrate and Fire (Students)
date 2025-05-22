@@ -1,0 +1,43 @@
+# Jupyter: enable plot rendering inside the notebook
+%matplotlib inline
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# --- Simulation Parameters ---
+T = 100          # total simulation time in ms
+dt = 0.1         # time step in ms
+time = np.arange(0, T, dt)  # time vector
+
+# --- Neuron Parameters (realistic, in mV and pA) --- You should annotate this.
+C = 200.0      
+V_th = -50.0  
+V_reset = -65.0 
+V_rest = -65.0  
+I_ext = 300.0    
+
+# --- Initialize voltage and spike times ---
+V = np.full_like(time, V_rest)  # set all values to resting voltage
+spike_times = []
+
+# --- Simulation Loop ---
+for i in range(1, len(time)):
+    dV = (I_ext / C) * dt       # ΔV = (I / C) * dt, in mV
+    V[i] = V[i-1] + dV          
+
+    if V[i] >= V_th:            
+        V[i-1] = 40.0           # mark spike as +40 mV (for visualization)
+        V[i] = V_reset         
+        spike_times.append(time[i])
+
+# --- Plotting ---
+plt.figure(figsize=(10, 4))
+plt.plot(time, V, label='Membrane Potential (mV)')
+plt.axhline(V_th, color='r', linestyle='--', label='Threshold (-50 mV)')
+plt.xlabel('') #what should the x be?
+plt.ylabel('') #what should the y be?
+plt.title('Perfect Integrate-and-Fire Neuron (Realistic Units)')
+plt.legend()
+plt.grid(True)
+plt.show()
+
