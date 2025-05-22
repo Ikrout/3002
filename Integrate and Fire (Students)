@@ -14,7 +14,7 @@ C = 200.0
 V_th = -50.0  
 V_reset = -65.0 
 V_rest = -65.0  
-I_ext = 300.0    
+I_ext = 500.0    
 
 # --- Initialize voltage and spike times ---
 V = np.full_like(time, V_rest)  # set all values to resting voltage
